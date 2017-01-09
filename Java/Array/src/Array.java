@@ -43,17 +43,52 @@ public class Array {
 	
 	public static void main(String[] args){
 		int arraySize = 8;
-		int target = 9;
-		int arrayLength;
+		
 		//int[] nums = inputArray(arraySize);
-		//arrayLength = Solution26.removeDuplicates(nums);
-		//arrayLength = Solution80.removeDuplicates2(nums);
-		//int[] index = Solution167.twoSum(nums, target);
+		//int arrayLength = Solution26.removeDuplicates(nums);
+		//int arrayLength = Solution80.removeDuplicates2(nums);
+		
+		
+		/* 
+		 * int target = 9;
+		 * int[] index = Solution167.twoSum(nums, target);
+		 * outputArray(index);
+		 */
 
+		/*
 		int[] nums = {4, 3, 2, 7, 8, 2, 3, 1};
 		List<Integer> result = Solution448.findDisappearedNumbers(nums);
-		//outputArray(index);
 		outputArrayList(result);
+		*/
+		
+		/*
+		int[] nums = {1, 2, 3, 4, 5, 6, 7};
+		int k = 13;
+		Solution189.rotate(nums, k);
+		outputArray(nums);
+		*/
+		
+		/*
+		int[] nums1 = {1, 3, 5, 7, 9, 0, 0, 0};
+		int[] nums2 = {2, 4, 6};
+		int m = 5, n = 3;
+		Solution88.merge(nums1, m, nums2, n);
+		outputArray(nums1);
+		*/
+		
+		/*
+		int[] nums = {1, 2, 3, 4};
+		int[] nums = {1, 1, 2147483647};
+		int moveSteps = Solution453.minMoves(nums);
+		outputArray(nums);
+		System.out.println(moveSteps);
+		*/
+		
+		int[] nums = {1, 2, 3, 4};
+		int moveSteps = Solution462.minMoves2(nums);
+		outputArray(nums);
+		System.out.println(moveSteps);
+		
 	}
 
 }
