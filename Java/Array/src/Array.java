@@ -30,7 +30,7 @@ public class Array {
 	}
 	
 	public static void outputArrayList(List<Integer> result){
-		System.out.println("\nOutput Array:");
+		System.out.println("\nOutput ArrayList:");
 		System.out.print("result = [");
 		for (int i = 0; i < result.size(); i++){
 			if (i != result.size() - 1)
@@ -84,10 +84,44 @@ public class Array {
 		System.out.println(moveSteps);
 		*/
 		
+		/*
 		int[] nums = {1, 2, 3, 4};
 		int moveSteps = Solution462.minMoves2(nums);
 		outputArray(nums);
 		System.out.println(moveSteps);
+		*/
+		
+		/*
+		int[] nums = {3, 2, 1, 5, 6, 4};
+		int k = 2;
+		int kthLargestEle = Solution215.findKthLargest(nums, k);
+		System.out.println(kthLargestEle);
+		*/
+		
+		/*
+		int[] nums1 = {1, 2, 2, 1};
+		int[] nums2 = {2, 2};
+		//int[] result = Solution349.intersection(nums1, nums2);
+		int[] result = Solution350.intersetion2(nums1, nums2);
+		outputArray(result);
+		*/
+		
+		/*
+		int[] nums = {4,3,2,7,8,2,3,1};
+		List<Integer> result = Solution442.findDuplicates(nums);
+		outputArrayList(result);
+		outputArray(nums);
+		*/
+		
+		/*
+		int[] nums = {1, 2, 3, 4};
+		int[] result = Solution238.productExceptSelf(nums);
+		outputArray(result);
+		*/
+		
+		int[] nums = {4, 5, 6, 7, 0, 1, 2};
+		int result = Solution153.findMin(nums);
+		System.out.println(result);
 		
 	}
 
