@@ -119,10 +119,22 @@ public class Array {
 		outputArray(result);
 		*/
 		
+		/*
 		int[] nums = {4, 5, 6, 7, 0, 1, 2};
 		int result = Solution153.findMin(nums);
 		System.out.println(result);
+		*/
 		
+		/*
+		int[] nums = {3, 3, 1, 3, 3};
+		int result = Solution154.findMin2(nums);
+		System.out.println(result);
+		*/
+		
+		int[] nums = {3, 3, 1, 2, 3};
+		int target = 4;
+		boolean result = Solution81.search(nums, target);
+		System.out.println(result);
 	}
 
 }
