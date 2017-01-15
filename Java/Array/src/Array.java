@@ -131,10 +131,26 @@ public class Array {
 		System.out.println(result);
 		*/
 		
+		/*
 		int[] nums = {3, 3, 1, 2, 3};
 		int target = 4;
 		boolean result = Solution81.search(nums, target);
 		System.out.println(result);
+		*/
+		
+		/*
+		int[] nums = {1, 2, 3, 4, 5, 6, 7, 8};
+		Solution384 obj = new Solution384(nums);
+		int[] param2 = obj.shuffle();
+		outputArray(param2);
+		int[] param1 = obj.reset();
+		outputArray(param1);
+		*/
+		
+		int[] nums = {1, 2, 3, 4, 5};
+		int s = 15;
+		int result = Solution209.minSubArrayLen2(s, nums);
+		System.out.println(result);;
 	}
 
 }
