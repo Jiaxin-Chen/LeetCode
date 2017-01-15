@@ -9,7 +9,7 @@ public class Solution209 {
 	 */
 	
 	/* Complexity: Time O(N) */
-	public static int minSubArrayLen1(int s, int[] nums){
+	public static int minSubArrayLen(int s, int[] nums){
 		if (nums == null || s == 0){
 			return 0;
 		}

@@ -147,10 +147,32 @@ public class Array {
 		outputArray(param1);
 		*/
 		
+		/*
 		int[] nums = {1, 2, 3, 4, 5};
 		int s = 15;
 		int result = Solution209.minSubArrayLen2(s, nums);
-		System.out.println(result);;
+		System.out.println(result);
+		*/
+		
+		/*
+		//int[] nums = {3, 10, 5, 25, 2, 8};
+		int[] nums = {14, 11, 7, 2};
+		System.out.println(Solution421.findMaximumXOR2(nums));
+		*/
+		
+		/*
+		int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
+		System.out.println(Solution53.maxSubArray(nums));
+		*/
+		
+		/*
+		int[] nums = {-4, -3}; //{2, 3, -2, 4};
+		System.out.println(Solution152.maxProduct(nums));
+		*/
+		
+		int[] nums = {6, 7, 1, 2, 3, 4, 5};
+		int target = 7;
+		System.out.println(Solution33.search(nums, target));
 	}
 
 }
