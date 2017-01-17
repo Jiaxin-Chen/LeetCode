@@ -38,4 +38,20 @@ public class Solution206 {
 		
 		return newHead;
 	}
+	
+	
+	/* Recursive Solution */
+	public static ListNode reverseList3(ListNode head){
+		return recursive(head, null);		
+	}
+	
+	private static ListNode recursive(ListNode head, ListNode newHead){
+		if (head == null){
+			return newHead;
+		}
+		
+		ListNode next = head.next;
+		head.next = newHead;
+		return recursive(next, head);
+	}
 }
