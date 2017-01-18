@@ -98,7 +98,8 @@ public class ListNode {
 		
 		int[] nums = {1, 1, 2, 2, 3, 3, 4, 5, 5, 5, 5};
 		ListNode head = inputLinkedList(nums);
-		outputLinkedList(Solution83.deleteDuplicates3(head));
+		//outputLinkedList(Solution83.deleteDuplicates3(head));
+		outputLinkedList(Solution82.deleteDuplicates(head));
 	}
 
 }
