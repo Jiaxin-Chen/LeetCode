@@ -96,10 +96,18 @@ public class ListNode {
 		outputLinkedList(Solution24.swapPairs2(head));
 		*/
 		
+		/*
 		int[] nums = {1, 1, 2, 2, 3, 3, 4, 5, 5, 5, 5};
 		ListNode head = inputLinkedList(nums);
 		//outputLinkedList(Solution83.deleteDuplicates3(head));
 		outputLinkedList(Solution82.deleteDuplicates(head));
+		*/
+		
+		int[] nums1 = {1, 3, 5, 6, 7, 8, 9};
+		int[] nums2 = {2, 4, 6, 7, 8, 9};
+		ListNode headA = inputLinkedList(nums1);
+		ListNode headB = inputLinkedList(nums2);
+		outputLinkedList(Solution160.getIntersectionNode2(headA, headB));
 	}
 
 }
