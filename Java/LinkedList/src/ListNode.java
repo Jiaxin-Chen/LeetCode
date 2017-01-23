@@ -103,11 +103,26 @@ public class ListNode {
 		outputLinkedList(Solution82.deleteDuplicates(head));
 		*/
 		
+		/*
 		int[] nums1 = {1, 3, 5, 6, 7, 8, 9};
 		int[] nums2 = {2, 4, 6, 7, 8, 9};
 		ListNode headA = inputLinkedList(nums1);
 		ListNode headB = inputLinkedList(nums2);
 		outputLinkedList(Solution160.getIntersectionNode2(headA, headB));
+		*/
+		
+		/*
+		int [] nums = {1, 2, 3, 4, 3, 2, 1};
+		ListNode head = inputLinkedList(nums);
+		if(Solution234.isPalindrome(head)){
+			System.out.println("True");
+		}
+		*/
+		
+		int[] nums = {1,2};//{1, 2, 3, 4, 5};
+		int n = 2;
+		ListNode head = inputLinkedList(nums);
+		outputLinkedList(Solution19.removeNthFromEnd(head, n));
 	}
 
 }
