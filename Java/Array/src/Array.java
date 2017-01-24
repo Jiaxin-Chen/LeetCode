@@ -15,6 +15,7 @@ public class Array {
 		while(in.hasNextInt() && i < arraySize){
 			nums[i++] = in.nextInt();
 		}
+		in.close();
 		return nums;
 	}
 	
@@ -42,11 +43,14 @@ public class Array {
 	
 	
 	public static void main(String[] args){
-		int arraySize = 8;
 		
-		//int[] nums = inputArray(arraySize);
-		//int arrayLength = Solution26.removeDuplicates(nums);
-		//int arrayLength = Solution80.removeDuplicates2(nums);
+		
+		/*
+		 * int[] nums = inputArray(arraySize);
+		 * int arraySize = 8;
+		 * int arrayLength = Solution26.removeDuplicates(nums);
+		 * int arrayLength = Solution80.removeDuplicates2(nums);
+		 */
 		
 		
 		/* 
