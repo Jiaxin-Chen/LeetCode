@@ -119,10 +119,16 @@ public class ListNode {
 		}
 		*/
 		
+		/*
 		int[] nums = {1,2};//{1, 2, 3, 4, 5};
 		int n = 2;
 		ListNode head = inputLinkedList(nums);
 		outputLinkedList(Solution19.removeNthFromEnd(head, n));
+		*/
+		
+		int[] nums = {3, 2, 4, 1, 5};
+		ListNode head = inputLinkedList(nums);
+		outputLinkedList(Solution147.insertionSortListNode(head));
 	}
 
 }
