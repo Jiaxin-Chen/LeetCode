@@ -126,9 +126,15 @@ public class ListNode {
 		outputLinkedList(Solution19.removeNthFromEnd(head, n));
 		*/
 		
+		/*
 		int[] nums = {3, 2, 4, 1, 5};
 		ListNode head = inputLinkedList(nums);
 		outputLinkedList(Solution147.insertionSortListNode(head));
+		*/
+		
+		int[] nums = {1, 2, 3, 4, 5};
+		ListNode head = inputLinkedList(nums);
+		outputLinkedList(Solution328.oddEvenList(head));
 	}
 
 }
