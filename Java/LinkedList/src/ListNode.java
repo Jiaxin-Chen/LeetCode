@@ -132,9 +132,57 @@ public class ListNode {
 		outputLinkedList(Solution147.insertionSortListNode(head));
 		*/
 		
+		/*
 		int[] nums = {1, 2, 3, 4, 5};
 		ListNode head = inputLinkedList(nums);
 		outputLinkedList(Solution328.oddEvenList(head));
+		*/
+		
+		/*
+		int[] nums1 = {7, 2, 4, 3};
+		int[] nums2 = {5, 6, 4};
+		ListNode l1 = inputLinkedList(nums1);
+		ListNode l2 = inputLinkedList(nums2);
+		//outputLinkedList(Solution2.addTwoNumbers(l1, l2));
+		outputLinkedList(Solution445.addTwoNumbers(l1, l2));
+		*/
+		
+		/*
+		int[] nums = {1,3 ,4, 6, 3, 4, 5};
+		int x = 4;
+		ListNode head = inputLinkedList(nums);
+		outputLinkedList(Solution86.partition(head, x));
+		*/
+		
+		/*
+		int[] nums = {1, 2, 3, 4, 5};
+		int k = 1;
+		ListNode head = inputLinkedList(nums);
+		outputLinkedList(Solution61.rotateRight(head, k));
+		*/
+		
+		/*
+		int[] nums = {1, 2, 3, 4, 5, 6};
+		ListNode head = inputLinkedList(nums);
+		Solution143.reorderList(head);
+		outputLinkedList(head);
+		*/
+		
+		/*
+		int[] nums = {1, 2, 3, 4};
+		int m = 1, n = 3;
+		ListNode head = inputLinkedList(nums);
+		outputLinkedList(Solution92.reverseBetween(head, m, n));
+		*/
+		
+		/*
+		int[] nums = {1, 2, 3, 4, 5};
+		int k = 2;
+		ListNode head = inputLinkedList(nums);
+		outputLinkedList(Solution25.reverseKGroups(head, k));
+		*/
+		
+		
 	}
 
 }

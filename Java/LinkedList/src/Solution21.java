@@ -31,11 +31,13 @@ public class Solution21 {
 			}
 			head = head.next;
 		}
+		/*
 		if (l1 != null){
 			head.next = l1;
 		}else{
 			head.next = l2;
-		}
+		}*/
+		head.next = (l1 != null) ? l1 : l2;
 		
 		return dummy.next;
 	}
@@ -59,4 +61,5 @@ public class Solution21 {
 		 }
 		 return head;
 	 }
+	 
 }
