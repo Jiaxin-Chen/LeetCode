@@ -6,7 +6,7 @@ public class Solution20 {
 	 * The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
 	 */
 	
-	public static boolean isValid(String s){
+	public boolean isValid(String s){
 		Stack<Character> stack = new Stack<Character>();
 		for (char c : s.toCharArray()){
 			if (c == '('){
@@ -20,5 +20,14 @@ public class Solution20 {
 			}
 		}
 		return stack.isEmpty();
+	}
+	
+	public static void main(String[] args) {
+		String s = "[]({{}}[])";
+		Solution20 res = new Solution20();
+		if(res.isValid(s)){
+			System.out.println("True");
+		}
+
 	}
 }

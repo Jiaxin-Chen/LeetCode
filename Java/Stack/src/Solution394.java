@@ -32,7 +32,17 @@ public class Solution394 {
 				cur.append(ch);
 			}
 		}
-		return cur.toString();
-		
+		return cur.toString();	
+	}
+	
+	public static void main(String[] args){
+		Solution394 res = new Solution394();
+		String s;
+		s = "3[a]2[bc]";
+		System.out.println(res.decodeString(s));
+		s = "3[a2[c]]";
+		System.out.println(res.decodeString(s));
+		s = "2[abc]3[cd]ef";
+		System.out.println(res.decodeString(s));
 	}
 }
