@@ -6,6 +6,9 @@ public class Solution434 {
 	 */
 	
 	public int countSegments(String s){
+		if(s == null || s.length() == 0){
+			return 0;
+		}
 		int count = 0;
 		char[] ch = s.toCharArray();
 		
