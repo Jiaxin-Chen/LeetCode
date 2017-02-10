@@ -12,7 +12,7 @@ public class Solution69 {
 		
 		int left = 1, right = x, res = 0;
 		while(left <= right){
-			int mid = (left + right) >>> 1;
+			int mid = left + (right - left) /2;
 			if(mid <= x / mid){
 				left = mid + 1;
 				res = mid;
@@ -32,7 +32,7 @@ public class Solution69 {
 		
 		int left = 1, right = x;
 		while(left <= right){
-			int mid = (left + right) >>> 1;
+			int mid = left + (right - left) /2;
 			if(mid == x / mid){
 				return mid;
 			}else if(mid < x / mid){

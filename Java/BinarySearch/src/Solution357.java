@@ -23,7 +23,7 @@ public class Solution357 {
 		long left = 1, right = num;
 		
 		while(left <= right){  //Corner case: num = 1
-			long mid = (left + right) / 2;
+			long mid = left + (right - left) /2;
 			long res = mid * mid;
 			if(res == num){
 				return true;
