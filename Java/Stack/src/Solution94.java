@@ -6,7 +6,7 @@ public class Solution94 {
 	 * Given a binary tree, return the inorder traversal of its nodes' values.
 	 */
 	
-	public static List<Integer> inorderTraversal(TreeNode root){
+	public List<Integer> inorderTraversal(TreeNode root){
 		List<Integer> list = new ArrayList<Integer>();
 		
 		Stack<TreeNode> stack = new Stack<TreeNode>();

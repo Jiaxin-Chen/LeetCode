@@ -1,4 +1,4 @@
-
+/*
 public class test {
 	private int a;
 	private int b;
@@ -46,3 +46,7 @@ public class test {
 		System.out.println(91 * 91);
 	}
 }
+*/
+
+
+
