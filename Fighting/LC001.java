@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 /* 
 Given an array of integers, return indices of the two numbers such that 
 they add up to a specific target. You may assume that each input would 
@@ -12,8 +14,9 @@ Example:
 
 public class LC001 {
 
+	// My version:
 	// Time Complexity: O(N^2)
-	// Runtime: 
+	// Runtime: 57ms, beat 10.27%
 	public int[] twoSum(int[] nums, int target){
 		if(nums == null || nums.length == 0){
 			return null;
@@ -33,6 +36,10 @@ public class LC001 {
 		return null;
 	}
 
+
+	// Optimized Version:
+	// Time Complexity: O(NlogN), because it takes logN time to find element and insert key.
+	// Runtime: 10ms, beat 43.55%
 	public int[] twoSum2(int[] nums, int target){
 		if(nums == null || nums.length == 0){
 			return null;
@@ -69,8 +76,8 @@ public class LC001 {
 		int[] nums = {2, 7, 11, 15};
 		int target = 22;
 
-		LC001 tmp = new LC001();
-		int res[] = tmp.twoSum2(nums, target);
+		LC001 x = new LC001();
+		int res[] = x.twoSum2(nums, target);
 
 		for(int i = 0; i < res.length; i++){
 			System.out.println(res[i]);
