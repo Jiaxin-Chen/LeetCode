@@ -1,8 +1,6 @@
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 /*
+15. 3Sum
+
 Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? 
 Find all unique triplets in the array which gives the sum of zero.
 Note: The solution set must not contain duplicate triplets.
@@ -15,6 +13,10 @@ Example:
   		[-1, -1, 2]
 	]
  */
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class LC015{
 
