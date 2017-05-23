@@ -11,7 +11,7 @@ You may assume no duplicate exists in the array.
 public class LC033{
 
 	// Time Complexity: O(logN)
-	// Runtime: 16ms, beat 38.91%
+	// Runtime: 16ms, beat 77.73%
 	public int search(int[] nums, int target){
 		if(nums == null || nums.length == 0){
 			return -1;
@@ -46,6 +46,39 @@ public class LC033{
 		return -1;
 	}
 
+	// Time Complexity: O(logN)
+	// Runtime: 16ms, beats 38.23%
+	public int search2(int[] nums, int target) {
+        if(nums.length == 0)
+			return -1;
+
+		int left = 0, right = nums.length - 1;
+		while(left <= right){
+			int mid = left + (right - left) / 2;
+			if(nums[mid] == target)
+				return mid;
+			
+			// The first half is in order, the pivot is in the second half
+			if(nums[left] <= nums[mid]){
+				if(nums[left] <= target && target < nums[mid]){
+					right = mid - 1;
+				}else{
+					left = mid + 1;
+				}
+			}
+			// The pivot is in the first half, the second half is in order!
+			else{
+				if(nums[mid] < target && target <= nums[right]){
+					left = mid + 1;
+				}else{
+					right = mid - 1;
+				}
+			}
+		}
+
+		return -1;
+    }
+
 	/*
 	Explanation: 
 	Let's say nums looks like this: [12, 13, 14, 15, 16, 17, 18, 19, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -62,7 +95,7 @@ public class LC033{
 	
 	// Time Complexity: O(logN)
 	// Runtime: 15ms, beats 55.98%
-	public int search2(int[] nums, int target){
+	public int search3(int[] nums, int target){
 		if(nums.length == 0 || nums == null){
 			return -1;
 		}
