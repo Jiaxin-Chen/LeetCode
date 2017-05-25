@@ -9,6 +9,8 @@ Given heights = [2,1,5,6,2,3],
 return 10.
  */
 
+import java.util.Stack;
+
 public class LC084{
 	// Time Complexity: O(N)
 	// Runtime: 5ms, beats 93.73%
@@ -43,10 +45,11 @@ public class LC084{
 		return maxArea;
 	}
 
+
 	public static void main(String[] args){
-		int[] heights = {2,1,5,6,2,3};
+		int[] heights = {1, 1};
 		LC084 x = new LC084();
-		int maxArea = x.largestRectangleArea(heights);
+		int maxArea = x.largestRectangleArea2(heights);
 		System.out.println(maxArea);
 	}
 }
