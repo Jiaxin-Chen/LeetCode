@@ -16,7 +16,7 @@ Note: Recursive solution is trivial, could you do it iteratively?
 */
 
 import java.util.*;
-
+/*
 class TreeNode{
 	int val;
 	TreeNode left;
@@ -25,18 +25,18 @@ class TreeNode{
 		val = x;
 	}
 }
-
+*/
 public class LC145{
 
 	// Recursive version
 	// Time Complexity: O()
 	// Runtime: 1ms, beats 58.50%
-	public List<Integer> postorderTraversal(TreeNode root){
+	public static List<Integer> postorderTraversal(TreeNode root){
 		List<Integer> postorder = new ArrayList<Integer>();
 		return traversal(postorder, root);
 	}
 
-	private List<Integer> traversal(List<Integer> postorder, TreeNode root){
+	private static List<Integer> traversal(List<Integer> postorder, TreeNode root){
 		if(root == null)
 			return postorder;
 
