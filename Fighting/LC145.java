@@ -29,7 +29,7 @@ class TreeNode{
 public class LC145{
 
 	// Recursive version
-	// Time Complexity: O()
+	// Time Complexity: O(2^N)
 	// Runtime: 1ms, beats 58.50%
 	public static List<Integer> postorderTraversal(TreeNode root){
 		List<Integer> postorder = new ArrayList<Integer>();
@@ -51,7 +51,10 @@ public class LC145{
 	// Time Complexity: O(N)
 	// Runtime: 2ms, beats 7.71%
 	public List<Integer> postorderTraversal2(TreeNode root){
-		List<Integer> postorder = new ArrayList<Integer>();
+		/* Better to use LinkedList than ArrayList here!!! 
+		   Because it takes O(1) for LinkedList to insert while O(N) for ArrayList to insert!!!
+		 */
+		List<Integer> postorder = new LinkedList<Integer>(); 
 
 		if(root == null)
 			return postorder;
