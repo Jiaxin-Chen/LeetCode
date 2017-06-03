@@ -18,6 +18,31 @@ Note:
 The input is assumed to be a 32-bit signed integer. Your function should return 0 when the reversed integer overflows.
 */
 
-public int reverse(int x){
-	
+
+public class LC007{
+	// Time Complexity: O(N)
+	// Runtime: 37ms, beats 91.91%
+	public int reverse(int x){
+		int res = 0;
+
+		int remain = 0, curRes = 0;
+		while(x != 0){
+			remain = x % 10;
+			curRes = res * 10 + remain;
+			if((curRes - remain) / 10 != res)
+				return 0;
+			res = curRes;
+			x = x / 10;
+			System.out.println("remain = " + remain + ", curRes = " + curRes + ", res = " + res + ", x = " + x);
+		}
+		return res;
+	}
+
+
+	public static void main(String[] args){
+		int x = 1234567890;
+		LC007 xxx = new LC007();
+		System.out.println(xxx.reverse(x));
+	}
 }
+
