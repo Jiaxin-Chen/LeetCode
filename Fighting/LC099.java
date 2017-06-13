@@ -11,6 +11,17 @@ A solution using O(n) space is pretty straight forward. Could you devise a const
 
 // Reference: https://discuss.leetcode.com/topic/29161/share-my-solutions-and-detailed-explanation-with-recursive-iterative-in-order-traversal-and-morris-traversal
 
+/*
+Now the problem is if we found an incorrect pair where prev.val > curr.val, how do we know which node is the incorrect one? 
+The answer is it depends on whether we have found incorrect node before. So What is that?
+
+Since we get two elements that are swapped by mistake, there must be a smaller TreeNode get a larger value and a larger TreeNode get a smaller value.
+Their value are swapped, but the incorrect smaller node is still in smaller tree and incorrect larger node is still in larger tree. 
+So we will visit the incorrect smaller node first, and this node will be detected when we compare its value with next.val, i.e. 
+when it is treated as prev node. The incorrect larger node will be detected when we compare its value with prev.val. 
+We don't know if it is close or not close to incorrect smaller node, so we should continue search BST and update it if we found another incorrect node.
+ */
+
 import java.util.*;
 
 class TreeNode{
@@ -24,6 +35,10 @@ class TreeNode{
 
 
 public class LC099{
+
+    // Recursive Version:
+    // Time Complexity: O(NlogN), Space Complexity: O(N)
+    // Runtime: 3ms, beats 80.91%
 	public void recoverTree(TreeNode root) {
     	//use inorder traversal to detect incorrect node
    		inOrder(root);
@@ -38,7 +53,9 @@ public class LC099{
 	TreeNode second = null;
 
 	public void inOrder(TreeNode root){
-    	if(root == null) return;
+    	if(root == null) 
+            return;
+
     	//search left tree
     	inOrder(root.left);
     
@@ -59,7 +76,9 @@ public class LC099{
 	}	
 
 
-	// Iterative Version:
+// Iterative Version:
+// Time Complexity: O(N), Space Complexity: O(N)
+// Runtime: 11ms, beats 4.71%
 public void recoverTree2(TreeNode root) {
     TreeNode first = null;
     TreeNode second = null;
@@ -98,9 +117,50 @@ public void recoverTree2(TreeNode root) {
     second.val = temp;
 }
 
+    // Iterative Version:
+    // Time Complexity: O(N), Space Complexity: O(N)
+    // Runtime: 8ms, beats 9.02%  
+    public void recoverTree3(TreeNode root) {
+        TreeNode first = null;
+        TreeNode second = null;
+    
+        TreeNode curr = root;
+        TreeNode prev = null;
+    
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+    
+        while(!stack.isEmpty() ||  curr != null){
+            //visit curr's left subtree
+            while(curr != null){
+                stack.push(curr);
+                curr = curr.left;
+            }
+            //done left subtree of curr Node
+            curr = stack.pop();
+            
+            //compare curr.val with prev.val if we have one
+            if(prev != null && curr.val <= prev.val){
+                //incorrect smaller node is always found as prev node
+                if(first == null) first = prev;
+                //incorrect larger node is always found as curr node
+                second = curr;         
+            }  
+            //visit curr's right subtree
+            prev = curr;
+            curr = curr.right;
+        }
+    
+        //recover swapped nodes
+        int temp = first.val;
+        first.val = second.val;
+        second.val = temp;
+    }
+
 
 //Morris-traversal
-public void recoverTree3(TreeNode root) {
+// Time Complexity: O(N), Space Complexity: O(1)
+// Runtime: 4ms, beats 38.56%
+public void recoverTree4(TreeNode root) {
 	
     TreeNode first = null;
     TreeNode second = null;
