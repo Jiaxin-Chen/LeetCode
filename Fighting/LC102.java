@@ -71,7 +71,7 @@ public class LC102{
 		if(root == null)
 			return;
 		if(res.size() <= level)
-			res.add(new LinkedList<>());
+			res.add(new LinkedList<Integer>());
 		Helper(res, root.left, level + 1);
 		Helper(res, root.right, level + 1);
 		res.get(level).add(root.val);

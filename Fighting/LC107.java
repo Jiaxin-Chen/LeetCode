@@ -45,7 +45,7 @@ public class LC107{
 		if(root == null)
 			return;
 		if(res.size() <= level)
-			res.add(0, new ArrayList<>());
+			res.add(0, new ArrayList<Integer>());
 		Helper(res, root.left, level + 1);
 		Helper(res, root.right, level + 1);
 		res.get(res.size() - level - 1).add(root.val);
