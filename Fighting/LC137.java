@@ -7,11 +7,18 @@ Your algorithm should have a linear runtime complexity. Could you implement it w
 */
 
 public class LC137{
+	// Time Complexity: O(N)
+	// Runtime: 1ms, beats 75.52%
 	public int singleNumber(int[] nums){
 		if(nums.length == 0)
 			return 0;
 
-		int res = 0;
+		int ones = 0, twos = 0; 
+		for(int i = 0; i < nums.length; i++){
+			ones = (ones ^ nums[i]) & ~twos;
+			twos = (twos ^ nums[i]) & ~ones;
+		}
+		return ones;
 	}
 
 	public static void main(String[] args){
