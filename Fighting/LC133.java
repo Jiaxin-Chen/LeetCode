@@ -38,6 +38,8 @@ class UndirectedGraphNode{
 
 public class LC133{
 
+	// Time Complexity: ()
+	// Runtime: 6ms, beats 65.68%
 	private Map<Integer, UndirectedGraphNode> map = new HashMap<Integer, UndirectedGraphNode>();
 
 	public UndirectedGraphNode cloneGraph(UndirectedGraphNode node){
@@ -54,7 +56,30 @@ public class LC133{
 		UndirectedGraphNode cloneNode = new UndirectedGraphNode(node.label);
 		map.put(cloneNode.label, cloneNode);
 		for(UndirectedGraphNode neighbor : node.neighbors){
-			cloneNode.neighbors.add(neighbor);
+			cloneNode.neighbors.add(Helper(neighbor));
+		}
+		return cloneNode;
+	}
+
+
+	// Time Complexity: 
+	// Runtime: 
+	public UndirectedGraphNode cloneGraph2(UndirectedGraphNode node){
+		return Helper2(node, new HashMap<UndirectedGraphNode, UndirectedGraphNode>());
+	}
+
+	private UndirectedGraphNode Helper2(UndirectedGraphNode node, Map<UndirectedGraphNode, UndirectedGraphNode> map){
+		if(node == null)
+			return null;
+
+		UndirectedGraphNode cloneNode = new UndirectedGraphNode(node.label);
+		map.put(node, cloneNode);
+
+		for(UndirectedGraphNode neighbor : node.neighbors){
+			if(map.containsKey(neighbor))
+				cloneNode.neighbors.add(map.get(neighbor));
+			else
+				cloneNode.neighbors.add(Helper2(neighbor, map));
 		}
 		return cloneNode;
 	}
