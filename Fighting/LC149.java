@@ -22,6 +22,8 @@ class Point{
 }
 
 public class LC149{
+	// Time Complexity: O(N^2)
+	// Runtime: 166ms, beats 7.80%
 	public int maxPoints(Point[] points){
 		int len = points.length;
 		if(len <= 2)
@@ -41,10 +43,11 @@ public class LC149{
 						continue;
 					}
 					//double k = (double)(points[i].y - points[j].y) / (double)(points[i].x - points[j].x);
+					
+					// We have to use BigDecimal here to handle the precision case: [[0,0],[94911151,94911150],[94911152,94911151]]
 					BigDecimal dy = new BigDecimal(points[i].y - points[j].y);
 					BigDecimal dx = new BigDecimal(points[i].x - points[j].x);
 					BigDecimal k = dy.divide(dx, MathContext.DECIMAL128);
-
 
 					if(map.containsKey(k)){
 						map.put(k, map.get(k) + 1);
