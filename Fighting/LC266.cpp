@@ -13,22 +13,30 @@ using namespace std;
 
 class LC266{
 public:
+	// Time Complexity: O(N), Space Complexity: O(N)
+	// Runtime: 0ms, beats 37.79%
 	bool canPermutePalindrome(string s){
 		int n = s.length();
 		if(n == 0)
 			return false;
 
-		for(int i = 0, j = n - 1; i <= j; i++, j--){
-			if(s[i] != s[j])
-				return false;
+		int map[128] = {0};
+		int count = 0;
+
+		for(int i = 0; i < n; i++){
+			map[s[i]]++;
 		}
-		return true;
+		for(int key = 0; key < 128 && count <= 1; key++){
+			count += map[key] % 2;
+		}
+
+		return count <= 1;
 	}
 };
 
 int main(){
 	LC266 x;
-	string s = "carerac";
+	string s = "aab";
 	cout <<  x.canPermutePalindrome(s) << endl;
 	return 0;
 }
