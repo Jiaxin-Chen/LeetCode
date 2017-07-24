@@ -4,6 +4,9 @@
 #include<stack>     // stack
 #include<deque>     // deque
 #include<climits>   // INT_MIN, INT_MAX
+#include<stdlib.h>  // atoi, abs
+#include<math.h>    // fabs, labs
+#include<string>    // string
 
 using namespace std;
 
@@ -34,10 +37,10 @@ public:
 		sort(intervals.begin(), intervals.end(), compare_end);    // void
 
 		// print
-	/*	for(auto start : starts) 
+		for(auto start : starts) 
 			cout << start << endl;
 		for(auto interval : intervals)
-			cout << interval.start << ", " << interval.end << endl;*/
+			cout << interval.start << ", " << interval.end << endl;
 	}
 	static bool compare_start(Interval& interval1, Interval& interval2){
 		return interval1.start > interval2.start;
@@ -107,13 +110,45 @@ public:
 			cout << *it << endl; // Accessing it by iterator pointer
 	}
 
+
+
+	void arrayMethods(){
+		int nums1[5];  // random num, it's better to initialize
+		int nums2[5] = {1, 2}; // {1, 2, 0, 0, 10
+		int nums3[5] = {1, 2, 3, 4, 5};
+		char ch[5] = {'1', '2', '3', '4', '\0'};
+		char ch2[] = "abcdefg";
+
+		int *pointer;  // int *pointer = nums3;
+		pointer = nums3;
+		
+		for(int i = 0; i < 5; i++){
+			cout << *(nums3 + i) << endl;
+			cout << *(pointer + i) << endl;
+		}
+		cout << ch << endl << ch2 << endl;
+	}
+
+
+	void conversionMethods(){
+		int x = 123;
+		string str1 = to_string(x);
+		string str2 = "456";
+		int y = stoi(str2);
+		char ch1[6] = "12345";  
+		int z = atoi(ch1);
+		cout << str1 << endl << y << endl << z << endl;
+	}
+
 };
 
 int main(){
 	CMethodSummary x;
-	x.sortMethods();
-	x.stackMethods();
-	x.vectorMethods();
+	//x.sortMethods();
+	//x.stackMethods();
+	//x.vectorMethods();
+	x.arrayMethods();
+	x.conversionMethods();
 
 	return 0;
 }

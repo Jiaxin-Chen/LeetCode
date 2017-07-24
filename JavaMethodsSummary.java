@@ -1,23 +1,30 @@
 
 import java.util.*;
 
-public class JavaSkillsForInterview{
+public class JavaMethodsSummary{
 	public void StringMethods(){
-		String s = "  0123 456  7";
-		String str1 = s.substring(0, 3); // "012", doesn't include the endIdx
-		String str2 = s.substring(3);    // "3456", from beginIdx to the end of the string
-		String str3 = s.trim();			 // "0123 456  7", trim only the leading white space of the string
-		char ch = s.charAt(0);  		 // '0'
-		int len = s.length();			 // 7
+		String s = "  0123 123  0";
+		String str = s.trim();			 // "0123 123  0", trim only the leading white space of the string
+		String str2 = str.substring(0, 4); // "0123", [begigIdx, endIdx)
+		String str3 = str.substring(3);    // "3 123 0", [beginIdx, str3.length()-1)
 		
-		
-		boolean flag = s.equals("b");
-		System.out.println(str3);
+		char ch = str.charAt(0);  	    // '0'
+		int len = str.length();         // 10
+		int idx1 = str.indexOf('2');         // 2
+		int idx2 = str.indexOf('2', 5);      // 6
+		int idx3 = str.indexOf("23");		 // 2
+		int idx4 = str.indexOf("23", 5);     // 6
+		int idx5 = str.lastIndexOf('2');     // 6
+		int idx6 = str.lastIndexOf('2', 3);  // 2
+
+		boolean flag = str.equals("b");
+
+		System.out.println(idx4);
 		
 	}
 
 	public static void main(String[] args){
-		JavaSkillsForInterview x = new JavaSkillsForInterview();
+		JavaMethodsSummary x = new JavaMethodsSummary();
 		x.StringMethods();
 	}
 }
