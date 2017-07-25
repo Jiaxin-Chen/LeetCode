@@ -12,6 +12,8 @@ Given s = "abc", return [].
 #include<iostream>
 #include<vector>
 #include<unordered_map>
+#include<string>
+#include<algorithm>
 
 using namespace std;
 
@@ -24,7 +26,7 @@ public:
 		vector<char> list;
 		int n = s.length(), count = 0;
 		string str = "";
-		char mid;
+		string mid = "";
 
 		for(int i = 0; i < n; i++){
 			map[s[i]]++;
@@ -32,7 +34,7 @@ public:
 		}
 		if(count > 1)
 			return res;
-
+/*
 		for(auto& x : map){
 			char key = x.first;
 			int val = x.second;
@@ -44,7 +46,22 @@ public:
 				list.push_back(key);
 			cout << "end" << endl;
 		}
+*/
+		for(auto it = map.begin(); it != map.end(); ++it){
+			char key = it->first;
+			int val = it->second;
 
+			cout << key << " " << val << endl;
+
+			if(val % 2 != 0)
+				mid += key;
+
+
+			for(int i = 0; i < val / 2; i++){
+				list.push_back(key);
+			}
+			cout << key << " " << val << endl;
+		}
 
 		cout << "ddfadfa";
 
@@ -53,7 +70,7 @@ public:
 		return res;
 	}
 
-	void backtracking(vector<string>& res, vector<char>& list, vector<bool>& used, char& mid, string& str){
+	void backtracking(vector<string>& res, vector<char>& list, vector<bool>& used, string& mid, string& str){
 		if(str.length() == list.size()){
 			string tmp = str;
 			reverse(str.begin(), str.end());
