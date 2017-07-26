@@ -23,7 +23,7 @@ public:
 		
 		unordered_map<char, int> map;
 		vector<string> res;
-		vector<char> list;
+		vector<char> list; 
 		int n = s.length(), count = 0;
 		string str = "";
 		string mid = "";
@@ -47,14 +47,16 @@ public:
 			cout << "end" << endl;
 		}
 */
+
+		for(int i = 0; i < list.size(); i++)
+			cout << list[i] << endl;
+
 		for(auto it = map.begin(); it != map.end(); ++it){
 			char key = it->first;
 			int val = it->second;
 
-			cout << key << " " << val << endl;
-
 			if(val % 2 != 0)
-				mid += key;
+				mid.push_back(key);
 
 
 			for(int i = 0; i < val / 2; i++){
@@ -63,7 +65,7 @@ public:
 			cout << key << " " << val << endl;
 		}
 
-		cout << "ddfadfa";
+		cout << mid << " " << str << endl;
 
 		vector<bool> used(false, list.size());
 		backtracking(res, list, used, mid, str);
@@ -79,11 +81,11 @@ public:
 		}
 
 		for(int i = 0; i < list.size(); i++){
-			if(i > 0 && list[i] == list[i-1] && !used[i-1])
+			if(i > 0 && (list[i] == list[i-1]) && !used[i-1])
 				continue;
 			if(!used[i]){
 				used[i] = true;
-				str += list[i];
+				str.push_back(list[i]);
 				backtracking(res, list, used, mid, str);
 				str.erase(str.end());
 				used[i] = false;
@@ -94,7 +96,7 @@ public:
 
 int main(){
 	LC267 x;
-	string s = "aabb";
+	string s = "aabbc";
 	vector<string> res = x.generatePalindromes(s);
 	for(string s : res)
 		cout << s << endl;

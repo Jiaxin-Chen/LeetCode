@@ -1,12 +1,14 @@
-#include<iostream>  // std::cout
-#include<vector>    // vector
-#include<algorithm> // sort
-#include<stack>     // stack
-#include<deque>     // deque
-#include<climits>   // INT_MIN, INT_MAX
-#include<stdlib.h>  // atoi, abs
-#include<math.h>    // fabs, labs
-#include<string>    // string
+#include<iostream> 	 	// std::cout
+#include<vector>    	// vector
+#include<algorithm> 	// sort, reverse
+#include<stack>     	// stack
+#include<deque>     	// deque
+#include<climits>   	// INT_MIN, INT_MAX
+#include<stdlib.h>  	// atoi, abs
+#include<math.h>    	// fabs, labs
+#include<string>    	// string
+#include<unordered_map> // unordered_map
+#include<utility> 		// pair
 
 using namespace std;
 
@@ -49,6 +51,15 @@ public:
 		return interval1.end < interval2.end;
 	}
 
+
+	void reverseMethods(){
+		string s = "abcdef";
+		reverse(s.begin(), s.end());   // void
+		vector<int> nums = {1, 2, 3, 4, 5, 6};
+		reverse(nums.begin(), nums.end());
+		cout << s << endl;
+		for(int i = 0; i < nums.size(); i++) cout << nums[i] << " ";
+	}
 
 
 	void stackMethods(){
@@ -111,6 +122,59 @@ public:
 	}
 
 
+	void unordered_mapMethods(){
+		unordered_map<char, int> map = {{'a', 1}, {'b', 2}};
+		unordered_map<char, int> tmp1 = {{'c', 3}, {'d', 4}};
+		pair<char, int> pair1 ('m', 0);
+
+		// void
+		map.insert(pair1);						 // copy insertion
+		map.insert(make_pair<char,int>('e', 5)); // move insertion
+		map.insert(tmp1.begin(), tmp1.end());    // range insertion
+		map.insert({{'x', 11}, {'y', 22}});      // Initial list insertion
+		map['d']++;    // add {'d', 1}
+		map['e']++;    // increase {'e', 5}
+		map['f'] = 10; // add {'f', 10}
+
+		char ch = 'a';
+		unordered_map<char, int>::iterator it = map.find(ch);
+		cout << it->first << " " << it->second << endl;
+
+		// Searches the container for elements whose key is k and returns the number of elements found. 
+		// Because unordered_map containers do not allow for duplicate keys, this means that the function actually returns 1 if an element with that key exists in the container, and zero otherwise.
+		int val =  map.count('e'); // 1
+
+		// {{'f', 10}, {'y', 22}, {'c', 3}, {'d', 5}, {'e', 6}, {'x', 11}, {'m', 0}, {'b', 2}, {'a', 1}}
+		cout << endl << "map contains: " << endl;
+		for(auto& x : map)
+			cout << x.first << ": " << x.second << endl;
+
+		// void
+		map.erase(map.begin());   // erase by iterator, delete {'f', 10}
+		map.erase(map.find('x')); // erase by iterator, delete {'f', 10}
+		map.erase('d');           // erase by key, delete {'d', 5}
+		map.erase(map.find('m'), map.end());  // erase by range, delete {{'m', 0}, {'b', 2}, {'a', 1}}
+		
+		// {{'y', 22}, {'c', 3}, {'e', 6}}
+		cout << endl << "iterator traverse: " << endl;
+		for(auto iter = map.begin(); iter != map.end(); iter++)
+			cout << iter->first << ": " << iter -> second << endl;
+
+	}
+
+
+	void pairMethods(){
+		pair<int, char> foo;
+		pair<int, int> bar;
+		pair<string, double> tmp ("aaa", 1.1);
+
+		foo = make_pair(10, 'A');
+		bar = make_pair(20.5, 'A'); // implicit conversion from pair<double,char>
+
+		cout << "foo: " << foo.first << ", " << foo.second << endl;
+		cout << "bar: " << bar.first << ", " << bar.second << endl;
+	}
+
 
 	void arrayMethods(){
 		int nums1[5];  // random num, it's better to initialize
@@ -145,10 +209,13 @@ public:
 int main(){
 	CMethodSummary x;
 	//x.sortMethods();
+	//x.reverseMethods();
+	x.unordered_mapMethods();
+	//x.pairMethods();
 	//x.stackMethods();
-	//x.vectorMethods();
-	x.arrayMethods();
-	x.conversionMethods();
+	x.vectorMethods();
+	//x.arrayMethods();
+	//x.conversionMethods();
 
 	return 0;
 }
