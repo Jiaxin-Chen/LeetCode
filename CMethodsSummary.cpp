@@ -9,6 +9,7 @@
 #include<string>    	// string
 #include<unordered_map> // unordered_map
 #include<utility> 		// pair
+#include<sstream> 		// istringstream
 
 using namespace std;
 
@@ -140,6 +141,10 @@ public:
 		unordered_map<char, int>::iterator it = map.find(ch);
 		cout << it->first << " " << it->second << endl;
 
+		// like the containsKey() in Java
+		if (map.find(ch) != map.end())
+			cout << "not exist";
+
 		// Searches the container for elements whose key is k and returns the number of elements found. 
 		// Because unordered_map containers do not allow for duplicate keys, this means that the function actually returns 1 if an element with that key exists in the container, and zero otherwise.
 		int val =  map.count('e'); // 1
@@ -204,18 +209,32 @@ public:
 		cout << str1 << endl << y << endl << z << endl;
 	}
 
+
+	void stringMethods(){
+		// split by " "
+		string str = "My dream company is Google or Facebook or Airbnb.";
+		istringstream in(str);  
+		vector<string> words;
+		string word;
+		while(in >> word){
+			words.push_back(word);
+			//cout << word << endl;
+		}
+	}
+
 };
 
 int main(){
 	CMethodSummary x;
 	//x.sortMethods();
 	//x.reverseMethods();
-	x.unordered_mapMethods();
+	//x.unordered_mapMethods();
 	//x.pairMethods();
 	//x.stackMethods();
-	x.vectorMethods();
+	//x.vectorMethods();
 	//x.arrayMethods();
 	//x.conversionMethods();
+	x.stringMethods();
 
 	return 0;
 }
