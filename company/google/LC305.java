@@ -71,7 +71,7 @@ class LC305{
 				int neighborIdx = x * n + y;
 
 				// x, y must be in the matrix range
-				// parents[neighborIdx] != -1 indicates grid[x][y] = '0'
+				// parents[neighborIdx] != -1 indicates grid[x][y] = '1'
 				if(x >= 0 && x < m && y >= 0 && y < n && parents[neighborIdx] != -1){
 					int neighborRoot = getRoot(parents, neighborIdx);
 
