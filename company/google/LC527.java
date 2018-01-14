@@ -71,6 +71,36 @@ class LC527{
 	}
 
 //---------------------------------------------------------------------------
+	public List<String> wordsAbbreviation3(List<String> dict){
+		int len = dict.size();
+		Map<String, Integer> map = new HashMap<>(); // <current abbr, the count of current abbr>
+		int[] prefix = new int[len];
+		List<String> res = new LinkedList<>();
+
+		for(int i = 0; i < len; i++){
+			res.add(getAbbr(dict.get(i), 1));
+			prefix[i]++;
+			map.put(res.get(i), map.getOrDefault(res.get(i), 0) + 1);
+		}
+
+		while(true){
+			boolean isUnique = true;
+			for(int i = 0; i < len; i++){
+				if(map.get(res.get(i)) > 1){
+					prefix[i]++;
+					res.set(i, getAbbr(dict.get(i), prefix[i]));
+					map.put(res.get(i), map.getOrDefault(res.get(i), 0) + 1);
+					isUnique = false;
+				}
+			}
+			if(isUnique){
+				break;
+			}
+		}
+		return res;
+	}
+
+//---------------------------------------------------------------------------
 	// Time Complexity: O(n(2L+1))
 	// The time complexity will be O(nL) for building trie, O(nL) to resolve conflicts, O(n) to group words. 
 	// So the time complexity will be O(n(2L + 1). 
@@ -183,7 +213,7 @@ class LC527{
 		LC527 x = new LC527();
 		String[] dictionary = {"like", "god", "internal", "me", "internet", "interval", "intension", "face", "intrusion"};
 		List<String> dict = Arrays.asList(dictionary);
-		System.out.println(x.wordsAbbreviation2(dict));
+		System.out.println(x.wordsAbbreviation3(dict));
 	}
 }
 

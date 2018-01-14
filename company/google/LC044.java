@@ -34,20 +34,25 @@ class LC044{
 		boolean[][] dp = new boolean[m + 1][n + 1];
 
 		dp[0][0] = true;
-		for(int j = 0; j < n; j++){
-			if(p.charAt(j) == '*'){
-				dp[0][j + 1] = dp[0][j];
+		for(int j = 1; j <= n; j++){
+			if(p.charAt(j-1) == '*'){
+				dp[0][j] = dp[0][j-1];
 			}
 		}
 
 		
-		for(int i = 0; i < m; i++){
-			for(int j = 0; j < n; j++){
-				if(p.charAt(j) == '?' || s.charAt(i) == p.charAt(j)){
-					dp[i+1][j+1] = dp[i][j];
+		for(int i = 1; i <= m; i++){
+			for(int j = 1; j <= n; j++){
+				if(s.charAt(i-1) == p.charAt(j-1)){
+					dp[i][j] = dp[i-1][j-1];
 				}
-				if(p.charAt(j) == '*'){
-					dp[i+1][j+1] = dp[i+1][j] || dp[i][j+1];
+				if(p.charAt(j-1) == '?'){
+					dp[i][j] = dp[i-1][j-1];
+				}
+				if(p.charAt(j-1) == '*'){
+
+					dp[i][j] = dp[i][j-1]  // indicates * regard as empty
+							|| dp[i-1][j]; // indicates * regard as s.charAt(i)
 				}
 			}
 		}
@@ -55,8 +60,8 @@ class LC044{
 	}
 
 	public static void main(String[] args){
-		String s = "aab", p = "c*a*b";
+		String s = "aa", p = "a";
 		LC044 x = new LC044();
-		System.out.println(x.isMatch(s, p));
+		System.out.println(x.isMatch2(s, p));
 	}
 }

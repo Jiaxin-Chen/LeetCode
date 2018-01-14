@@ -62,9 +62,153 @@ The output consists of two word squares. The order of output does not matter (ju
 
 import java.util.*;
 
+
 // Runtime: 30ms, beats 96.30%
 class LC425{
 	class TrieNode{
+		TrieNode[] next;
+		List<String> prefix;  // store the corresponding words List for cur prefix
+		TrieNode(){
+			next = new TrieNode[26];
+			prefix = new LinkedList<>();
+		}
+	}
+
+	private TrieNode buildTrie(String[] words){
+		TrieNode root = new TrieNode();
+		for(String word : words){
+			TrieNode cur = root;
+			for(char ch : word.toCharArray()){
+				int idx = ch - 'a';
+				if(cur.next[idx] == null){
+					cur.next[idx] = new TrieNode();
+				}
+				cur.next[idx].prefix.add(word);
+				cur = cur.next[idx];
+			}
+		}
+		return root;
+	}
+
+	public List<List<String>> wordSquares(String[] words){
+		List<List<String>> res = new LinkedList<>();
+		if(words == null || words.length == 0){
+			return res;
+		}
+		int len = words[0].length(); // not words.length !!!
+		TrieNode root = buildTrie(words);
+		List<String> curSquare = new LinkedList<>();
+
+		for(String word : words){
+			curSquare.add(word);
+			backtracking(root, res, curSquare, len);
+			curSquare.remove(curSquare.size() - 1);
+		}
+		return res;
+	}
+
+	private void backtracking(TrieNode root, List<List<String>> res, List<String> curSquare, int len){
+		if(curSquare.size() == len){
+			res.add(new LinkedList<>(curSquare));
+			return;
+		}
+		int idx = curSquare.size();
+		System.out.println("idx = " + idx);
+		StringBuilder prefixAtIdxRow = new StringBuilder();
+		for(String curWord : curSquare){
+			prefixAtIdxRow.append(curWord.charAt(idx));
+		}
+		System.out.println(prefixAtIdxRow);
+		List<String> wordsAtIdxRow = getWordsByPrefix(root, prefixAtIdxRow.toString());
+		System.out.println(wordsAtIdxRow);
+		for(String word : wordsAtIdxRow){
+			curSquare.add(word);
+			backtracking(root, res, curSquare, len);
+			curSquare.remove(curSquare.size() - 1);
+		}
+	}
+
+	private List<String> getWordsByPrefix(TrieNode root, String prefixAtIdxRow){
+		TrieNode cur = root;
+		for(char ch : prefixAtIdxRow.toCharArray()){
+			int idx = ch - 'a';
+			if(cur.next[idx] == null){
+				return new LinkedList<String>();
+			}
+			cur = cur.next[idx];
+		}
+		return cur.prefix;
+	}
+
+//----------------------------------------------------------------------------
+
+	public List<List<String>> wordSquares3(String[] words){
+		List<List<String>> res = new LinkedList<>();
+		if(words == null || words.length == 0){
+			return res;
+		}
+		Map<String, List<String>> map = new HashMap<>(); // <prefix, the word list correpsonding to the prefix>
+		List<String> curSquare = new LinkedList<>();
+		int wordLen = words[0].length();
+
+		initPrefix(words, map);
+		dfs(map, res, curSquare, 0, wordLen);
+		return res;
+	}
+
+	private void initPrefix(String[] words, Map<String, List<String>> map){
+		for(String word : words){
+			map.putIfAbsent("", new LinkedList<String>());
+			map.get("").add(word);
+
+			StringBuilder prefix = new StringBuilder();
+			for(char ch : word.toCharArray()){
+				prefix.append(ch);
+				map.putIfAbsent(prefix.toString(), new LinkedList<>());
+				map.get(prefix.toString()).add(word);
+			}
+		}
+	}
+
+	private void dfs(Map<String, List<String>> map, List<List<String>> res, List<String> curSquare, int idx, int wordLen){
+		if(curSquare.size() == wordLen){
+			res.add(new LinkedList<String>(curSquare));
+			return;
+		}
+		StringBuilder prefixAtIdxRow = new StringBuilder();
+		for(String word : curSquare){
+			prefixAtIdxRow.append(word.charAt(idx));
+		}
+		List<String> wordsAtIdxRow = map.get(prefixAtIdxRow.toString());
+		System.out.println(wordsAtIdxRow);
+		for(String newWord : wordsAtIdxRow){
+			if(!isValidWord(map, curSquare, newWord, idx, wordLen)){
+				continue;
+			}
+			curSquare.add(newWord);
+			dfs(map, res, curSquare, idx + 1, wordLen);
+			curSquare.remove(curSquare.size() - 1);
+		}
+	}
+
+	// check if the words list of current prefix is valid for the square
+	private boolean isValidWord(Map<String, List<String>> map, List<String> curSquare, String newWord, int idx, int wordLen){
+		for(int i = idx + 1; i < wordLen; i++){
+			StringBuilder prefix = new StringBuilder();
+			for(String word : curSquare){
+				prefix.append(word.charAt(i));
+			}
+			prefix.append(newWord.charAt(i));
+			if(!map.containsKey(prefix.toString())){
+				return false;
+			}
+		}
+		return true;
+	}
+
+
+//-------------------------------------------------------
+	/*class TrieNode{
 		TrieNode[] next;
 		String word;
 		TrieNode(){
@@ -73,14 +217,14 @@ class LC425{
 		}
 	}
 
-	public List<List<String>> wordSquares(String[] words){
+	public List<List<String>> wordSquares2(String[] words){
 		List<List<String>> res = new LinkedList<>();
 		if(words == null || words.length == 0){
 			return res;
 		}
 
 		// Step 1:
-		TrieNode root = buildTrie(words);
+		TrieNode root = buildTrie2(words);
 
 		// Step 2: declare trienode for each row
 		int n = words[0].length();
@@ -89,11 +233,11 @@ class LC425{
 			nodes[i] = root;
 		}
 
-		backtracking(nodes, res, 0, 0, n);
+		backtracking2(nodes, res, 0, 0, n);
 		return res;
 	}
 
-	public void backtracking(TrieNode[] nodes, List<List<String>> res, int row, int col, int n){
+	public void backtracking2(TrieNode[] nodes, List<List<String>> res, int row, int col, int n){
 		// if we go to the last char, add the ans into the res
 		if(row == col && row == n){
 			List<String> list = new LinkedList<>();
@@ -119,7 +263,7 @@ class LC425{
 					}
 
 					//move to the “right” by giving col+1 for the next DFS step.
-					backtracking(nodes, res, row, col + 1, n);
+					backtracking2(nodes, res, row, col + 1, n);
 
 					// backtracking
 					nodes[row] = preRow;
@@ -147,11 +291,11 @@ class LC425{
 			cur.word = word;
 		}
 		return root;
-	}
+	}*/
 
 	public static void main(String[] args){
 		String[] words = new String[]{"area","lead","wall","lady","ball"};
 		LC425 x = new LC425();
-		System.out.println(x.wordSquares(words));
+		System.out.println(x.wordSquares3(words));
 	}
 }
