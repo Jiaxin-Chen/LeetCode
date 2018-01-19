@@ -24,7 +24,7 @@ S is guaranteed to be a special binary string as defined above.
 import java.util.*;
 
 class LC761{
-	// Because the number of 0's is equal to the number of 1's in M
+	// Because the input is the special string, whose number of 0's is equal to the number of 1's in M
 	// If there is a prefix P of Mwhich has one less 1's than 0's, 1P will make up a special string. 1P will be found as special string before 1M0 in my solution.
 	// It means that every prefix of M has at least as many 1's as 0's.
 	public String makeLargestSpecial(String s) {

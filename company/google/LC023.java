@@ -22,7 +22,15 @@ class LC023{
 			return null;
 		}
 
-		PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, (a, b) -> (a.val - b.val));
+		// Lambda comparison: 
+		//PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, (a, b) -> (a.val - b.val));
+
+		//
+		PriorityQueue<ListNode> queue = new PriorityQueue<ListNode>(lists.length, new Comparator<ListNode>(){
+			public int compare(ListNode a, ListNode b){
+				return a.val - b.val;
+			}
+		});
 
 		// Time Complexity: O(Nlogk)
 		for(ListNode list : lists){
