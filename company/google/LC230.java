@@ -45,12 +45,17 @@ class LC230{
 		count++;
 		if(count == k){
 			res = root.val;
+
+			//if we don't return here, time complexity: O(N)
+			//If we return here, time complexity: O(logN)
+			return;        
 		}
 		DFS(root.right, k);
 	}
 
+//-------------------------------------------------------------
 	// Iterative
-	// Time Complexity: O(N)
+	// Time Complexity: O(logN)
 	// Runtime: 3ms, beats 7.92%
 	public int kthSmallest2(TreeNode root, int k){
 		if(root == null){
@@ -135,6 +140,6 @@ class LC230{
 		root.right.left = new TreeNode(4);
 		int k = 4;
 
-		System.out.println(x.kthSmallest3(root, k));
+		System.out.println(x.kthSmallest(root, k));
 	}
 }
