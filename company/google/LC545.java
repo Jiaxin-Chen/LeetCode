@@ -112,6 +112,54 @@ class LC545{
 		bottomBoundary(res, root.right);
 	}
 
+//---------------------------------------------------------------------
+	// Code optimization:
+	public List<Integer> boundaryOfBinaryTree2(TreeNode root){
+		List<Integer> res = new ArrayList<>();
+		if(root != null){
+			res.add(root.val);
+			getBoundary(res, root.left, true, false);
+			getBoundary(res, root.right, false, true);
+		}
+		return res;
+	}
+
+	private void getBoundary(List<Integer> res, TreeNode root, boolean leftBoundary, boolean rightBoundary){
+		if(root == null){
+			return;
+		}
+
+		// Preorder: if node is left boundary, add it before 2 children
+		if(leftBoundary){
+			res.add(root.val);
+			System.out.println("left = " + root.val);
+		}
+
+		// Leaf node: bottom boundary
+		if(!leftBoundary && !rightBoundary && root.left == null && root.right == null){
+			res.add(root.val);
+			System.out.println("bottom = " + root.val);
+		}
+		
+		// node.left is left bound if node is left bound;
+		// node.right could also be left bound if node is left bound && node has no right child;
+		getBoundary(res, root.left, leftBoundary, rightBoundary && root.right == null);
+		getBoundary(res, root.right, leftBoundary && root.left == null, rightBoundary);
+		
+		/*
+		// Fault code: we need consider about the bottom boundary, 
+		// otherwise node like 5 in the test case will appear on the left boundary
+		getBoundary(res, root.left, leftBoundary, rightBoundary );
+		getBoundary(res, root.right, leftBoundary , rightBoundary);
+		*/
+
+		// Postorder: if node is right boundary, add it after 2 children
+		if(rightBoundary){
+			res.add(root.val);
+			System.out.println("right = " + root.val);
+		}
+	}
+
 	public static void main(String[] args){
 		TreeNode root = new TreeNode(1);
 		root.left = new TreeNode(2);
@@ -125,6 +173,6 @@ class LC545{
 		root.right.left.right = new TreeNode(10);
 		
 		LC545 x = new LC545();
-		System.out.println(x.boundaryOfBinaryTree(root));
+		System.out.println(x.boundaryOfBinaryTree2(root));
 	}
 }

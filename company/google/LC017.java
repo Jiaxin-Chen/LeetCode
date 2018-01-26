@@ -14,11 +14,12 @@ Although the above answer is in lexicographical order, your answer could be in a
 import java.util.*;	
 
 class LC017{
-	// Iterative:
-	// Time Complexity: O(N)
+	// Iterative: FIFO queue
+	// Time Complexity: O(m^n), the average number of letters on every number is m, and the length of digits string is n
 	// Runtime: 3ms, beats 67.99%
 	public List<String> letterCombinations(String digits){
 		LinkedList<String> res = new LinkedList<>();
+
 		if(digits == null || digits.length() == 0){
 			return res;
 		}

@@ -14,8 +14,8 @@ For the purpose of this problem, we define empty string as valid palindrome.
 */
 
 class LC125{
-	// Fault version:
-	// DID NOT consider lots of corner casese...
+	// My Fault version:
+	// DID NOT consider lots of corner casese... for example s = "   "
 	public boolean isPalindrome(String s){
 		if(s == null || s.length() == 0){
 			return true;
