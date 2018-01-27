@@ -58,4 +58,27 @@ class LC158 extends Reader4{
 
     	return idx;
     }
+
+
+    //-------------------------------------------------------------------------------------------------
+    private char[] buffer = new char[4];
+    int head = 0, tail = 0;
+
+    public int read(char[] buf, int n){
+        int i = 0; 
+        while(i < n){
+            if(head == tail){
+                head = 0;
+                tail = read4(buf);  // max is 4, enqueue
+                if(tail == 0){
+                    break;
+                }
+            }
+
+            while(i < n && head < tail){   // dequeue  
+                buffer[i++] = buf[head++];
+            }
+        }
+        return i;
+    }
 }
