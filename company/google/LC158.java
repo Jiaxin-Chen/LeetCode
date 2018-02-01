@@ -62,7 +62,8 @@ class LC158 extends Reader4{
 
     //-------------------------------------------------------------------------------------------------
     private char[] buffer = new char[4];
-    int head = 0, tail = 0;
+    private int head = 0;
+    private int tail = 0;
 
     public int read(char[] buf, int n){
         int i = 0; 

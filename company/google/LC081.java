@@ -49,6 +49,7 @@ class LC081{
 				// check if target in the range of [mid+1, right] (nums[mid]<target <= nums[right]), if so, do search in the second half
 				if(nums[right] >= target && nums[mid] < target){
 					left = mid + 1;
+				// if not, search in the second half 
 				}else{
 					right = mid - 1;
 				}

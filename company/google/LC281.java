@@ -84,10 +84,10 @@ public class ZigzagIterator {
     	/*
     	Fault version: cannot check v1 = [] by v1 != null, 
     	because [] is a existed collection but v1.size() = 0 and v1.isEmpty() = true.
-    	if(!v1.isEmpty()){
+    	if(v1 != null){
     		queue.offer(v1.iterator());
     	}
-    	if(!v2.isEmpty()){
+    	if(v2 != null){
     		queue.offer(v2.iterator());
     	}
 		*/
