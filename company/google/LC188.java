@@ -12,9 +12,31 @@ You may not engage in multiple transactions at the same time (ie, you must sell 
 import java.util.*;
 
 class LC188{
+    public int maxProfit(int k, int[] prices){
+        if(prices.length == 0){
+            return 0;
+        }
+
+        int[][] buy = new int[n][k];
+        int[][] sell = new int[n][k];
+        //Arrays.fill(buy[0], Integer.MIN_VALUE);
+        Arrays.fill(buy[0][0], -prices[0]);
+
+        for(int i = 1; i < prices; i++){
+            for(int j = 0; j < k; j++){
+                buy[i][j] = Math.max(buy[i-1][j], sell[i-1][j-1] - prices[i]);
+                sell[i][j] = Math.max(sell[i-1][j], buy[i][j] + prices[i]);
+            }
+        }
+        return sell[n-1][k-1];
+    }
+
+
+
+
 	// Time Complexity: O(Nk), Space complexity: O(K)
 	// TLE
-	public int maxProfit(int k, int[] prices){
+	public int maxProfit2(int k, int[] prices){
 		if(prices.length == 0){
 			return 0;
 		}
@@ -44,7 +66,7 @@ class LC188{
 
 
 	// Time Complexity: O(NK), Space Complexity: O(NK)
-	public int maxProfit2(int k, int[] prices){
+	public int maxProfit3(int k, int[] prices){
 		// write your code here
         if (k == 0) {
             return 0;
