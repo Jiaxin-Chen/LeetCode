@@ -27,7 +27,7 @@ class LC004{
 	*/
 
 	// Binary Search
-	// Time Complexity: O(log(m+n))
+	// Time Complexity: O(log(min(m+n)))
 	// Runtime: 63ms, beats 84.89%
 	public double findMedianSortedArrays(int[] nums1, int[] nums2){
 		// Actually we don't need consider (nums1 == null || nums2 == null) here

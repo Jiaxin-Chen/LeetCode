@@ -37,7 +37,7 @@ class LC133{
 	}
 
 	// DFS
-	// Time Complexity: O(N)
+	// Time Complexity: O(VE), where V is the # of nodes and E is the number of Edges(connections)
 	// Runtime: 5ms, beats 63.30%
 	public UndirectedGraphNode cloneGraph(UndirectedGraphNode node){
 		// Step 1: map node to cloned node instead of label to cloned node in case of duplicate labels
@@ -65,7 +65,7 @@ class LC133{
 
 //-------------------------------------------------------------------------------
 	// BFS
-	// Time Complexity: O(N)
+	// Time Complexity: O(VE), where V is the # of nodes and E is the number of Edges(connections)
 	// Runtime: 10ms, beats 15.85%
 	public UndirectedGraphNode cloneGraph2(UndirectedGraphNode node){
 		if(node == null){

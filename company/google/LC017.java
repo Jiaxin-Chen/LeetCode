@@ -43,7 +43,7 @@ class LC017{
 	}
 
 	// backtracking
-	// Time Complexity: O(k^N)
+	// Time Complexity: O(k^N), m: the average number of letters on every number, n: the length of digits string
 	// Runtime: 3ms, beats 67.99%
 	public List<String> letterCombinations2(String digits){
 		List<String> res = new LinkedList<>();
@@ -70,6 +70,36 @@ class LC017{
 			sb.setLength(len);
 		}
 	}
+
+
+	// backtracking
+	// Time Complexity: O(k^N), m: the average number of letters on every number, n: the length of digits string
+	// Runtime: 3ms, beats 67.99%
+	public List<String> letterCombinations3(String digits){
+		List<String> res = new LinkedList<>();
+		if(digits == null || digits.length() == 0){
+			return res;
+		}
+		String[] map = new String[]{"0", "1", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+		char[] nums = digits.toCharArray();
+
+		combination2(res, map, nums, "", 0);
+		return res;
+	}
+
+	private void combination2(List<String> res, String[] map, char[] nums, String cur, int idx){
+		if(idx == nums.length){
+			res.add(cur);
+			return;
+		}
+		char[] letters = map[nums[idx] - '0'].toCharArray();
+		for(int i = 0; i < letters.length; i++){
+			combination2(res, map, nums, cur + letter[i], idx + 1);
+			sb.setLength(len);
+		}
+	}
+
+
 
 	public static void main(String[] args){
 		String digits = "23";
